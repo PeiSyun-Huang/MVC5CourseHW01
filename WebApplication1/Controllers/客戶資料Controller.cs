@@ -17,7 +17,7 @@ namespace WebApplication1.Controllers
         // GET: 客戶資料
         public ActionResult Index()
         {
-            return View(db.客戶資料.ToList());
+            return View(db.客戶資料.Where(客 => 客.是否已刪除 == false).ToList());
         }
 
         // GET: 客戶資料/Details/5
@@ -50,6 +50,7 @@ namespace WebApplication1.Controllers
         {
             if (ModelState.IsValid)
             {
+                客戶資料.是否已刪除 = false;
                 db.客戶資料.Add(客戶資料);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -82,6 +83,7 @@ namespace WebApplication1.Controllers
         {
             if (ModelState.IsValid)
             {
+                客戶資料.是否已刪除 = false;
                 db.Entry(客戶資料).State = EntityState.Modified;
                 try
                 {
@@ -118,8 +120,27 @@ namespace WebApplication1.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             客戶資料 客戶資料 = db.客戶資料.Find(id);
-            db.客戶資料.Remove(客戶資料);
-            db.SaveChanges();
+            var 客戶銀行資訊 = 客戶資料.客戶銀行資訊;
+            foreach (var item in 客戶銀行資訊)
+            {
+                item.是否已刪除 = true;
+            }
+            var 客戶聯絡人 = 客戶資料.客戶聯絡人;
+            foreach (var item in 客戶聯絡人)
+            {
+                item.是否已刪除 = true;
+            }
+            客戶資料.是否已刪除 = true;
+            //db.客戶資料.Remove(客戶資料);
+            try
+            {
+                db.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+            
             return RedirectToAction("Index");
         }
 

@@ -11,7 +11,6 @@ namespace WebApplication1.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
     
     public partial class 客戶資料
     {
@@ -20,23 +19,13 @@ namespace WebApplication1.Models
             this.客戶銀行資訊 = new HashSet<客戶銀行資訊>();
             this.客戶聯絡人 = new HashSet<客戶聯絡人>();
         }
+    
         public int Id { get; set; }
-        [Required]
         public string 客戶名稱 { get; set; }
-        [Required]
-        [StringLength(8, MinimumLength = 8, ErrorMessage = "統一編號為 8 個數字組成")]
-        [RegularExpression("\\d{8}", ErrorMessage = "統一編號為 8 個數字組成")]
         public string 統一編號 { get; set; }
-        [Required]
-        [RegularExpression("\\d{4}-\\d{6}", ErrorMessage = "電話請填手機，例如：0910-123456")]
         public string 電話 { get; set; }
-        [Required]
-        [RegularExpression("\\d{2}-\\d{8}", ErrorMessage = "例如：04-12345678")]
         public string 傳真 { get; set; }
-        [Required]
         public string 地址 { get; set; }
-        [Required]
-        [RegularExpression(@"^([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$", ErrorMessage = "Email格式錯誤")]
         public string Email { get; set; }
         public Nullable<bool> 是否已刪除 { get; set; }
     

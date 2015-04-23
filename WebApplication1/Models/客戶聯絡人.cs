@@ -11,24 +11,15 @@ namespace WebApplication1.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
     
     public partial class 客戶聯絡人
     {
         public int Id { get; set; }
         public int 客戶Id { get; set; }
-        [Required]
         public string 職稱 { get; set; }
-        [Required]
         public string 姓名 { get; set; }
-        [Required]
-        [RegularExpression(@"^([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$", ErrorMessage = "Email格式錯誤")]
         public string Email { get; set; }
-        [Required]
-        [RegularExpression("\\d{4}-\\d{6}", ErrorMessage = "電話請填手機，例如：0910-123456")]
         public string 手機 { get; set; }
-        [Required]
-        [RegularExpression("\\d{2}-\\d{8}", ErrorMessage = "例如：04-12345678")]
         public string 電話 { get; set; }
         public Nullable<bool> 是否已刪除 { get; set; }
     
