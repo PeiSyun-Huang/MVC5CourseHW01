@@ -5,7 +5,6 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="cf10e0ff183f40a29a187d966acf4d14" Name="Diagram1">
-        <EntityTypeShape EntityType="客戶資料Model.sysdiagrams" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="客戶資料Model.客戶資料" Width="1.5" PointX="0.75" PointY="2.625" IsExpanded="true" />
         <EntityTypeShape EntityType="客戶資料Model.客戶銀行資訊" Width="1.5" PointX="3" PointY="1.125" IsExpanded="true" />
         <EntityTypeShape EntityType="客戶資料Model.客戶聯絡人" Width="1.5" PointX="3" PointY="4.375" IsExpanded="true" />

@@ -198,9 +198,6 @@
     </Compile>
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
-    <Compile Include="Models\sysdiagrams.cs">
-      <DependentUpon>Customer.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\客戶聯絡人.cs">
       <DependentUpon>Customer.tt</DependentUpon>
     </Compile>
@@ -304,8 +301,8 @@
     <Content Include="Views\客戶銀行資訊\Details.cshtml" />
     <Content Include="Views\客戶銀行資訊\Edit.cshtml" />
     <Content Include="Views\客戶銀行資訊\Index.cshtml" />
-    <Content Include="Views\檢視表_報表\Details.cshtml" />
     <Content Include="Views\檢視表_報表\Index.cshtml" />
+    <Content Include="Views\檢視表_報表\Index2.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

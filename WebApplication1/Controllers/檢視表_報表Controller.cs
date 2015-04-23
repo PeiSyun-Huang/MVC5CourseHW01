@@ -20,21 +20,6 @@ namespace WebApplication1.Controllers
             return View(db.檢視表_報表.ToList());
         }
 
-        // GET: 檢視表_報表/Details/5
-        public ActionResult Details(string id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            檢視表_報表 檢視表_報表 = db.檢視表_報表.Find(id);
-            if (檢視表_報表 == null)
-            {
-                return HttpNotFound();
-            }
-            return View(檢視表_報表);
-        }
-
         protected override void Dispose(bool disposing)
         {
             if (disposing)
