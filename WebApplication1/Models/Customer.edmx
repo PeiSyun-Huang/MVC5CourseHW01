@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="客戶資料Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="客戶資料Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="sysdiagrams">
           <Key>
             <PropertyRef Name="diagram_id" />
@@ -51,6 +51,16 @@
           <Property Name="手機" Type="nvarchar" MaxLength="50" />
           <Property Name="電話" Type="nvarchar" MaxLength="50" />
         </EntityType>
+        <!--產生期間發現錯誤:
+警告 6002: 資料表/檢視 'C:\USERS\LAURENCEHUANG\DESKTOP\WEBAPPLICATION1\WEBAPPLICATION1\APP_DATA\客戶資料.MDF.dbo.檢視表_報表' 未定義主索引鍵。已推斷此索引鍵，並將定義建立成唯讀的資料表/檢視。-->
+        <EntityType Name="檢視表_報表">
+          <Key>
+            <PropertyRef Name="客戶名稱" />
+          </Key>
+          <Property Name="客戶名稱" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="聯絡人數量" Type="int" />
+          <Property Name="銀行帳戶數量" Type="int" />
+        </EntityType>
         <Association Name="FK_客戶銀行資訊_客戶資料">
           <End Role="客戶資料" Type="Self.客戶資料" Multiplicity="1" />
           <End Role="客戶銀行資訊" Type="Self.客戶銀行資訊" Multiplicity="*" />
@@ -80,6 +90,13 @@
           <EntitySet Name="客戶資料" EntityType="Self.客戶資料" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="客戶銀行資訊" EntityType="Self.客戶銀行資訊" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="客戶聯絡人" EntityType="Self.客戶聯絡人" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="檢視表_報表" EntityType="Self.檢視表_報表" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [檢視表_報表].[客戶名稱] AS [客戶名稱], 
+    [檢視表_報表].[聯絡人數量] AS [聯絡人數量], 
+    [檢視表_報表].[銀行帳戶數量] AS [銀行帳戶數量]
+    FROM [dbo].[檢視表_報表] AS [檢視表_報表]</DefiningQuery>
+          </EntitySet>
           <AssociationSet Name="FK_客戶銀行資訊_客戶資料" Association="Self.FK_客戶銀行資訊_客戶資料">
             <End Role="客戶資料" EntitySet="客戶資料" />
             <End Role="客戶銀行資訊" EntitySet="客戶銀行資訊" />
@@ -89,8 +106,7 @@
             <End Role="客戶聯絡人" EntitySet="客戶聯絡人" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="客戶資料Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -181,7 +197,16 @@
             <End Role="客戶資料" EntitySet="客戶資料" />
             <End Role="客戶聯絡人" EntitySet="客戶聯絡人" />
           </AssociationSet>
+          <EntitySet Name="檢視表_報表" EntityType="客戶資料Model.檢視表_報表" />
         </EntityContainer>
+        <EntityType Name="檢視表_報表">
+          <Key>
+            <PropertyRef Name="客戶名稱" />
+          </Key>
+          <Property Name="客戶名稱" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="聯絡人數量" Type="Int32" />
+          <Property Name="銀行帳戶數量" Type="Int32" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -235,6 +260,15 @@
                 <ScalarProperty Name="Email" ColumnName="Email" />
                 <ScalarProperty Name="手機" ColumnName="手機" />
                 <ScalarProperty Name="電話" ColumnName="電話" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="檢視表_報表">
+            <EntityTypeMapping TypeName="客戶資料Model.檢視表_報表">
+              <MappingFragment StoreEntitySet="檢視表_報表">
+                <ScalarProperty Name="銀行帳戶數量" ColumnName="銀行帳戶數量" />
+                <ScalarProperty Name="聯絡人數量" ColumnName="聯絡人數量" />
+                <ScalarProperty Name="客戶名稱" ColumnName="客戶名稱" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

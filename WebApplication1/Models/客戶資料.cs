@@ -12,7 +12,7 @@ namespace WebApplication1.Models
     using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
-
+    
     public partial class 客戶資料
     {
         public 客戶資料()
@@ -20,24 +20,25 @@ namespace WebApplication1.Models
             this.客戶銀行資訊 = new HashSet<客戶銀行資訊>();
             this.客戶聯絡人 = new HashSet<客戶聯絡人>();
         }
-        [Required]
+    
         public int Id { get; set; }
         [Required]
         public string 客戶名稱 { get; set; }
         [Required]
-        [StringLength(8, MinimumLength = 8, ErrorMessage = "統一編號必須是8碼數字組成")]
-        [RegularExpression("\\d{8}", ErrorMessage = "統一編號必須是8碼數字組成")]
+        [StringLength(8,MinimumLength=8,ErrorMessage="統編必須8個數字組成")]
+        [RegularExpression("\\d{8}")]
         public string 統一編號 { get; set; }
         [Required]
-        [RegularExpression("\\d{4}-\\d{6}", ErrorMessage = "手機格式：0910-123456")]
+        [RegularExpression("\\d{4}-\\d{6}")]
         public string 電話 { get; set; }
         [Required]
+        [RegularExpression("\\d{2}-\\d{8}")]
         public string 傳真 { get; set; }
         [Required]
         public string 地址 { get; set; }
         [Required]
         public string Email { get; set; }
-
+    
         public virtual ICollection<客戶銀行資訊> 客戶銀行資訊 { get; set; }
         public virtual ICollection<客戶聯絡人> 客戶聯絡人 { get; set; }
     }

@@ -173,7 +173,10 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\客戶聯絡人Controller.cs" />
     <Compile Include="Controllers\客戶資料Controller.cs" />
+    <Compile Include="Controllers\客戶銀行資訊Controller.cs" />
+    <Compile Include="Controllers\檢視表_報表Controller.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -205,6 +208,9 @@
       <DependentUpon>Customer.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\客戶銀行資訊.cs">
+      <DependentUpon>Customer.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\檢視表_報表.cs">
       <DependentUpon>Customer.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -288,6 +294,18 @@
     <Content Include="Views\客戶資料\Details.cshtml" />
     <Content Include="Views\客戶資料\Edit.cshtml" />
     <Content Include="Views\客戶資料\Index.cshtml" />
+    <Content Include="Views\客戶聯絡人\Create.cshtml" />
+    <Content Include="Views\客戶聯絡人\Delete.cshtml" />
+    <Content Include="Views\客戶聯絡人\Details.cshtml" />
+    <Content Include="Views\客戶聯絡人\Edit.cshtml" />
+    <Content Include="Views\客戶聯絡人\Index.cshtml" />
+    <Content Include="Views\客戶銀行資訊\Create.cshtml" />
+    <Content Include="Views\客戶銀行資訊\Delete.cshtml" />
+    <Content Include="Views\客戶銀行資訊\Details.cshtml" />
+    <Content Include="Views\客戶銀行資訊\Edit.cshtml" />
+    <Content Include="Views\客戶銀行資訊\Index.cshtml" />
+    <Content Include="Views\檢視表_報表\Details.cshtml" />
+    <Content Include="Views\檢視表_報表\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
