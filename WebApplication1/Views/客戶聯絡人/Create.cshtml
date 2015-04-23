@@ -1,10 +1,10 @@
 ﻿@model WebApplication1.Models.客戶聯絡人
 
 @{
-    ViewBag.Title = "Create";
+    ViewBag.Title = "新增客戶聯絡人資料";
 }
 
-<h2>Create</h2>
+<h2>@ViewBag.Title</h2>
 
 
 @using (Html.BeginForm()) 
@@ -65,14 +65,14 @@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
+                <input type="submit" value="新增" class="btn btn-default" />
             </div>
         </div>
     </div>
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("返回清單", "Index")
 </div>
 
 @section Scripts {

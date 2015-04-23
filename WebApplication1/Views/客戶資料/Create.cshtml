@@ -4,7 +4,7 @@
     ViewBag.Title = "新增客戶資料";
 }
 
-<h2>新增</h2>
+<h2>@ViewBag.Title</h2>
 
 
 @using (Html.BeginForm()) 
@@ -72,7 +72,7 @@
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("返回清單", "Index")
 </div>
 
 @section Scripts {
