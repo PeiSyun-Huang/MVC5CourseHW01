@@ -201,6 +201,7 @@
     <Compile Include="Models\客戶聯絡人.cs">
       <DependentUpon>Customer.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\客戶聯絡人Email不能重複.cs" />
     <Compile Include="Models\客戶資料.cs">
       <DependentUpon>Customer.tt</DependentUpon>
     </Compile>

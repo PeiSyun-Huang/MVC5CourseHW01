@@ -52,6 +52,13 @@ namespace WebApplication1.Controllers
         {
             if (ModelState.IsValid)
             {
+                客戶聯絡人Email不能重複 email = new 客戶聯絡人Email不能重複();
+                if (email.IsEmailExist(客戶聯絡人))
+                {
+                    ViewBag.客戶Id = new SelectList(db.客戶資料, "Id", "客戶名稱", 客戶聯絡人.客戶Id);
+                    ViewBag.ErrorMsg = "Email重複";
+                    return View(客戶聯絡人);
+                }
                 客戶聯絡人.是否已刪除 = false;
                 db.客戶聯絡人.Add(客戶聯絡人);
                 try
@@ -95,6 +102,13 @@ namespace WebApplication1.Controllers
         {
             if (ModelState.IsValid)
             {
+                客戶聯絡人Email不能重複 email = new 客戶聯絡人Email不能重複();
+                if (email.IsEmailExist(客戶聯絡人))
+                {
+                    ViewBag.客戶Id = new SelectList(db.客戶資料, "Id", "客戶名稱", 客戶聯絡人.客戶Id);
+                    ViewBag.ErrorMsg = "Email重複";
+                    return View(客戶聯絡人);
+                }
                 客戶聯絡人.是否已刪除 = false;
                 db.Entry(客戶聯絡人).State = EntityState.Modified;
                 db.SaveChanges();
